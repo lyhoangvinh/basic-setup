@@ -2,8 +2,10 @@ package com.example.basic_setup
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -37,5 +39,18 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    fun ImageView.loadImage(url: String) {
+        if (url.isEmpty()) {
+//            setImageResource(R.drawable.icon01)
+        } else {
+            Picasso.get()
+                .load(url)
+                .fit()
+//                .placeholder(R.drawable.icon01)
+//                .error(R.drawable.icon01)
+                .centerCrop().into(this)
+        }
     }
 }
